@@ -1,25 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+function App(){
+
+    const comments=[
+        {id:1,text:"first comment"},
+        {id:2,text:"second comment"},
+        {id:3,text:"third comment"}
+    ]
+    const title='blog post'
+    const body='this is my blogpost'
+
+    const isCommented=true;
+    const commentBlock=(<div className="Comments">
+    <h3>comments ({comments.length})</h3>
+    <ul>
+       {
+        comments.map((comment,index)=>
+            <li key={index}>{comment.text}</li>
+        )
+       }
+    </ul>
+</div>)
+    return (
+      <div className="container">
+        <h1>{title.toLocaleUpperCase()}</h1>
+        <p>{body}</p>
+        {Math.random()*5*5}
+       {isCommented ? commentBlock : null}
+        
+      </div>
+        
+    )
 }
 
 export default App;
